@@ -1,0 +1,28 @@
+.bidForm {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.bidForm input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px;
+}
+
+.bidForm button {
+  padding: 8px 16px;
+  border: none;
+  background: #27ae60;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.bidForm button:hover {
+  background: #219150;
+}

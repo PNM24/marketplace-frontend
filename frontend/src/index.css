@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;         /* foarte important pentru full height */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* layout global */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;     /* aplicatia ocupa tot spatiul */
+}
+
+main {
+  flex: 1;              /* main se extinde ca să umple spațiul */
+  padding: 20px;
+}
