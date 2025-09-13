@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { saveUser } from "../utils/auth";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import PageWrapper from "../components/UI/PageWrapper";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,43 +11,34 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // DEMO login simplu
     if (email && password) {
-      const user = { name: "User Demo", email };
-      saveUser(user);
-
-      alert("✅ Login reușit!");
+      saveUser({ name: "User Demo", email });
       navigate("/profile");
-    } else {
-      alert("❌ Introdu date valide");
     }
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto" }}>
-      <h1>🔑 Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ display: "block", marginBottom: 10, width: "100%", padding: "8px" }}
+    <PageWrapper>
+      <Typography variant="h4" gutterBottom align="center">
+        🔑 Login
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit}>
+        <TextField
+          fullWidth label="Email" margin="normal"
+          value={email} onChange={(e) => setEmail(e.target.value)} required
         />
-        <input
-          type="password"
-          placeholder="Parolă"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ display: "block", marginBottom: 10, width: "100%", padding: "8px" }}
+        <TextField
+          fullWidth label="Parolă" type="password" margin="normal"
+          value={password} onChange={(e) => setPassword(e.target.value)} required
         />
-        <button type="submit">Login</button>
-      </form>
-      <p>Nu ai cont? <Link to="/register">Înregistrează-te aici</Link></p>
-    </div>
+        <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
+          Login
+        </Button>
+      </Box>
+      <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+        Nu ai cont? <Link to="/register">Înregistrează-te aici</Link>
+      </Typography>
+    </PageWrapper>
   );
 }
 

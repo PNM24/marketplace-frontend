@@ -1,7 +1,8 @@
 import React from "react";
+import { Typography, List, ListItem, ListItemText } from "@mui/material";
+import PageWrapper from "../components/UI/PageWrapper";
 
 function Profile() {
-  // momentam fake data - simulăm un user logat
   const user = {
     name: "Ion Popescu",
     email: "ion.popescu@email.com",
@@ -12,20 +13,22 @@ function Profile() {
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto" }}>
-      <h1>👤 Profil utilizator</h1>
-      <p><b>Nume:</b> {user.name}</p>
-      <p><b>Email:</b> {user.email}</p>
+    <PageWrapper>
+      <Typography variant="h4" gutterBottom align="center">
+        👤 Profil utilizator
+      </Typography>
+      <Typography><b>Nume:</b> {user.name}</Typography>
+      <Typography><b>Email:</b> {user.email}</Typography>
 
-      <h2>📑 Licitațiile mele</h2>
-      <ul>
+      <Typography variant="h6" sx={{ mt: 3 }}>📑 Licitațiile mele</Typography>
+      <List>
         {user.bids.map((bid) => (
-          <li key={bid.id}>
-            {bid.product} → {bid.amount} €
-          </li>
+          <ListItem key={bid.id}>
+            <ListItemText primary={`${bid.product} → ${bid.amount} €`} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </PageWrapper>
   );
 }
 

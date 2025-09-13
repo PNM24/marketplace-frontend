@@ -4,11 +4,10 @@ import { saveUser } from "../utils/auth";
 import {
   Box,
   Button,
-  Container,
   TextField,
-  Typography,
-  Paper
+  Typography
 } from "@mui/material";
+import PageWrapper from "../components/UI/PageWrapper";
 
 function Register() {
   const [name, setName] = useState("");
@@ -18,75 +17,38 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (name && email && password) {
-      const newUser = { name, email };
-      saveUser(newUser);
-
-      alert(`✅ Cont creat pentru ${name}`);
-      navigate("/profile");
-    }
+    const newUser = { name, email };
+    saveUser(newUser);
+    alert(`✅ Cont creat pentru ${name}`);
+    navigate("/profile");
   };
 
   return (
-    <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ p: 4, mt: 6 }}>
-        <Typography variant="h4" gutterBottom align="center">
-          📝 Înregistrare
-        </Typography>
-
-        <Box component="form" onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            label="Nume complet"
-            margin="normal"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-                sx={{
-                     '& .MuiOutlinedInput-root': {
-                      borderRadius: '60px',}}}
-          />
-          <TextField
-            fullWidth
-            type="email"
-            label="Email"
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-                sx={{
-                     '& .MuiOutlinedInput-root': {
-                      borderRadius: '60px',}}}
-          />
-          <TextField
-            fullWidth
-            type="password"
-            label="Parolă"
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            sx={{
-                     '& .MuiOutlinedInput-root': {
-                      borderRadius: '60px',}}}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 2, backgroundColor: "#2c3e50"   }}
-            
-          >
-            Înregistrează-te
-          </Button>
-        </Box>
-
-        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
-          Ai deja cont? <Link to="/login">Login aici</Link>
-        </Typography>
-      </Paper>
-    </Container>
+    <PageWrapper>
+      <Typography variant="h4" gutterBottom align="center">
+        📝 Înregistrare
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit}>
+        <TextField
+          fullWidth label="Nume complet" margin="normal"
+          value={name} onChange={(e) => setName(e.target.value)} required
+        />
+        <TextField
+          fullWidth type="email" label="Email" margin="normal"
+          value={email} onChange={(e) => setEmail(e.target.value)} required
+        />
+        <TextField
+          fullWidth type="password" label="Parolă" margin="normal"
+          value={password} onChange={(e) => setPassword(e.target.value)} required
+        />
+        <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
+          Înregistrează-te
+        </Button>
+      </Box>
+      <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+        Ai deja cont? <Link to="/login">Login aici</Link>
+      </Typography>
+    </PageWrapper>
   );
 }
 
