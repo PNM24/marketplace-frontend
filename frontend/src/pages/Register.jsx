@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { saveUser } from "../utils/auth";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Paper
+} from "@mui/material";
 
 function Register() {
   const [name, setName] = useState("");
@@ -17,43 +25,68 @@ function Register() {
 
       alert(`✅ Cont creat pentru ${name}`);
       navigate("/profile");
-    } else {
-      alert("❌ Completează toate câmpurile");
     }
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "0 auto" }}>
-      <h1>📝 Înregistrare</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nume complet"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          style={{ display: "block", marginBottom: 10, width: "100%", padding: "8px" }}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ display: "block", marginBottom: 10, width: "100%", padding: "8px" }}
-        />
-        <input
-          type="password"
-          placeholder="Parolă"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ display: "block", marginBottom: 10, width: "100%", padding: "8px" }}
-        />
-        <button type="submit">Înregistrează-te</button>
-      </form>
-      <p>Ai deja cont? <Link to="/login">Login aici</Link></p>
-    </div>
+    <Container maxWidth="sm">
+      <Paper elevation={3} sx={{ p: 4, mt: 6 }}>
+        <Typography variant="h4" gutterBottom align="center">
+          📝 Înregistrare
+        </Typography>
+
+        <Box component="form" onSubmit={handleSubmit}>
+          <TextField
+            fullWidth
+            label="Nume complet"
+            margin="normal"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+                sx={{
+                     '& .MuiOutlinedInput-root': {
+                      borderRadius: '60px',}}}
+          />
+          <TextField
+            fullWidth
+            type="email"
+            label="Email"
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+                sx={{
+                     '& .MuiOutlinedInput-root': {
+                      borderRadius: '60px',}}}
+          />
+          <TextField
+            fullWidth
+            type="password"
+            label="Parolă"
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            sx={{
+                     '& .MuiOutlinedInput-root': {
+                      borderRadius: '60px',}}}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 2, backgroundColor: "#2c3e50"   }}
+            
+          >
+            Înregistrează-te
+          </Button>
+        </Box>
+
+        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+          Ai deja cont? <Link to="/login">Login aici</Link>
+        </Typography>
+      </Paper>
+    </Container>
   );
 }
 
