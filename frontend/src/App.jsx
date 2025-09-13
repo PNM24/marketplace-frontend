@@ -12,6 +12,8 @@ import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Licitatii from "./pages/Licitatii";
+import Anunturi from "./pages/Anunturi";
 
 // Protecție rute
 import PrivateRoute from "./components/PrivateRoute";
@@ -27,6 +29,8 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/licitatii" element={<Licitatii />} />
+          <Route path="/anunturi" element={<Anunturi />} />
 
           {/* Pagini protejate */}
           <Route

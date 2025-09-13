@@ -19,10 +19,15 @@ function Header() {
 
       <nav className={styles.nav}>
         <Link to="/">Acasă</Link>
+        <Link to="/licitatii">Licitatii</Link>
+        <Link to="/anunturi">Anunțuri</Link>
+
         {user ? (
           <>
             <Link to="/profile">Profil</Link>
-            <button className={styles.logout} onClick={handleLogout}>Logout</button>
+            <button className={styles.logout} onClick={handleLogout}>
+              Logout
+            </button>
           </>
         ) : (
           <>
